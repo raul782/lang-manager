@@ -17,10 +17,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - type: bind
-        source: .
-        target: /app
-        consistency: delegated
+      - .:/app:delegated
       - type: volume
         source: dist
         target: /app/dist
@@ -31,9 +28,10 @@ services:
         target: /app/node_modules
         volume:
           nocopy: true
-    command: yarn start:server
+    command: yarn start:dev
     environment:
       - PORT=3000
+      - NODE_ENV=development
     restart: always
     networks:
       - langmanager

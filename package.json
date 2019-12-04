@@ -10,6 +10,9 @@
   },
   "scripts": {
     "tsc": "tsc",
+    "compile": "tsc -p tsconfig.json",
+    "start": "ts-node src/server/index.ts",
+    "start:dev": "yarn install && ./node_modules/nodemon/bin/nodemon.js",
     "start:server": "NODE_ENV={NODE_ENV:-production} node ./dist/server/index.js"
   },
   "dependencies": {
