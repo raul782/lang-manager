@@ -1,4 +1,4 @@
-import {getLanguages} from 'lib';
+import {getLanguages} from './lib';
 
 export default {
     getLanguages
