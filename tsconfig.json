@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "outDir": "./dist/",
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  }
+}

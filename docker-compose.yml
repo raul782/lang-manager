@@ -1,0 +1,50 @@
+version: '3.6'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+    networks:
+      - langmanager
+      - nginx
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf:delegated
+      - ./docker/nginx/nginx.sh:/opt/nginx/nginx.sh
+
+  lm:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+        consistency: delegated
+      - type: volume
+        source: dist
+        target: /app/dist
+        volume:
+          nocopy: true
+      - type: volume
+        source: node_modules
+        target: /app/node_modules
+        volume:
+          nocopy: true
+    command: yarn start:server
+    environment:
+      - PORT=3000
+    restart: always
+    networks:
+      - langmanager
+      - nginx
+
+networks:
+  langmanager:
+  nginx:
+
+volumes:
+  dist:
+    driver: local
+  node_modules:
+    driver: local
