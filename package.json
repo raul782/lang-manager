@@ -1,6 +1,6 @@
 {
   "name": "lang-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "language manager",
   "main": "dist/index.js",
   "repository": "git@github.com:raul782/lang-manager.git",
